@@ -6,14 +6,14 @@
     <ScrollView>
 
         <VerticalStackLayout
-            Spacing="25"
+            Spacing="5"
             Padding="30,0"
             VerticalOptions="Center">
 
             <Label
                 Text="Length units"
                 FontSize="Medium"
-                Margin="0,0,150,0"
+                Margin="0,10,150,0"
                 HorizontalOptions="Center"/>
 
                 <HorizontalStackLayout
@@ -37,6 +37,7 @@
 
                     <Label
                         x:Name="lowerLengthLabel"
+                        VerticalTextAlignment="Center"
                         Margin="10, 5, 10, 0"
                         IsVisible="True"
                         WidthRequest="150"/>
@@ -44,6 +45,128 @@
                 <Picker 
                         x:Name="lowerLengthPicker"
                         SelectedIndexChanged="upperLengthPicker_SelectedIndexChanged"
+                        Margin="10, 5, 10, 0"
+                        WidthRequest="180"/>
+            </HorizontalStackLayout>
+
+
+            <Label
+                Text="Temperature units"
+                FontSize="Medium"
+                Margin="0,20,100,0"
+                HorizontalOptions="Center"/>
+
+            <HorizontalStackLayout
+                    HorizontalOptions="Center">
+
+                <Entry x:Name="upperTemperatureEntry"
+                        Placeholder="Enter value"
+                        TextChanged="upperTemperatureEntry_TextChanged"
+                        Margin="10, 5, 10, 0"
+                        WidthRequest="150"/>
+
+                <Picker 
+                        x:Name="upperTemperaturePicker" 
+                        SelectedIndexChanged="upperTemperaturePicker_SelectedIndexChanged"
+                        Margin="10, 5, 10, 0"
+                        WidthRequest="180"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                    HorizontalOptions="Center">
+
+                <Label
+                        x:Name="lowerTemperatureLabel"
+                        VerticalTextAlignment="Center"
+                        Margin="10, 5, 10, 0"
+                        IsVisible="True"
+                        WidthRequest="150"/>
+
+                <Picker 
+                        x:Name="lowerTemperaturePicker"
+                        SelectedIndexChanged="upperTemperaturePicker_SelectedIndexChanged"
+                        Margin="10, 5, 10, 0"
+                        WidthRequest="180"/>
+            </HorizontalStackLayout>
+
+            
+
+
+            <Label
+                Text="Volume units"
+                FontSize="Medium"
+                Margin="0,20,150,0"
+                HorizontalOptions="Center"/>
+
+            <HorizontalStackLayout
+                    HorizontalOptions="Center">
+
+                <Entry x:Name="upperVolumeEntry"
+                        Placeholder="Enter value"
+                        TextChanged="upperVolumeEntry_TextChanged"
+                        Margin="10, 5, 10, 0"
+                        WidthRequest="150"/>
+
+                <Picker 
+                        x:Name="upperVolumePicker" 
+                        SelectedIndexChanged="upperVolumePicker_SelectedIndexChanged"
+                        Margin="10, 5, 10, 0"
+                        WidthRequest="180"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                    HorizontalOptions="Center">
+
+                <Label
+                        x:Name="lowerVolumeLabel"
+                        VerticalTextAlignment="Center"
+                        Margin="10, 5, 10, 0"
+                        IsVisible="True"
+                        WidthRequest="150"/>
+
+                <Picker 
+                        x:Name="lowerVolumePicker"
+                        SelectedIndexChanged="upperVolumePicker_SelectedIndexChanged"
+                        Margin="10, 5, 10, 0"
+                        WidthRequest="180"/>
+            </HorizontalStackLayout>
+
+
+            <Label
+                Text="Mass units"
+                FontSize="Medium"
+                Margin="0,20,150,0"
+                HorizontalOptions="Center"/>
+
+            <HorizontalStackLayout
+                    HorizontalOptions="Center">
+
+                <Entry x:Name="upperMassEntry"
+                        Placeholder="Enter value"
+                        TextChanged="upperMassEntry_TextChanged"
+                        Margin="10, 5, 10, 0"
+                        WidthRequest="150"/>
+
+                <Picker 
+                        x:Name="upperMassPicker" 
+                        SelectedIndexChanged="upperMassPicker_SelectedIndexChanged"
+                        Margin="10, 5, 10, 0"
+                        WidthRequest="180"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                    HorizontalOptions="Center">
+
+                <Label
+                        x:Name="lowerMassLabel"
+                        VerticalTextAlignment="Center"
+                        Margin="10, 5, 10, 0"
+                        IsVisible="True"
+                        WidthRequest="150"/>
+
+                <Picker 
+                        x:Name="lowerMassPicker"
+                        SelectedIndexChanged="upperMassPicker_SelectedIndexChanged"
                         Margin="10, 5, 10, 0"
                         WidthRequest="180"/>
             </HorizontalStackLayout>
@@ -76,6 +199,7 @@
 
                 <Label
                         x:Name="lowerAreaLabel"
+                        VerticalTextAlignment="Center"
                         Margin="10, 5, 10, 0"
                         IsVisible="True"
                         WidthRequest="150"/>
@@ -87,84 +211,6 @@
                         WidthRequest="180"/>
             </HorizontalStackLayout>
 
-
-            <Label
-                Text="Volume units"
-                FontSize="Medium"
-                Margin="0,0,150,0"
-                HorizontalOptions="Center"/>
-
-            <HorizontalStackLayout
-                    HorizontalOptions="Center">
-
-                <Entry x:Name="upperVolumeEntry"
-                        Placeholder="Enter value"
-                        TextChanged="upperVolumeEntry_TextChanged"
-                        Margin="10, 5, 10, 0"
-                        WidthRequest="150"/>
-
-                <Picker 
-                        x:Name="upperVolumePicker" 
-                        SelectedIndexChanged="upperVolumePicker_SelectedIndexChanged"
-                        Margin="10, 5, 10, 0"
-                        WidthRequest="180"/>
-            </HorizontalStackLayout>
-
-            <HorizontalStackLayout
-                    HorizontalOptions="Center">
-
-                <Label
-                        x:Name="lowerVolumeLabel"
-                        Margin="10, 5, 10, 0"
-                        IsVisible="True"
-                        WidthRequest="150"/>
-
-                <Picker 
-                        x:Name="lowerVolumePicker"
-                        SelectedIndexChanged="upperVolumePicker_SelectedIndexChanged"
-                        Margin="10, 5, 10, 0"
-                        WidthRequest="180"/>
-            </HorizontalStackLayout>
-
-
-            <Label
-                Text="Mass units"
-                FontSize="Medium"
-                Margin="0,0,150,0"
-                HorizontalOptions="Center"/>
-
-            <HorizontalStackLayout
-                    HorizontalOptions="Center">
-
-                <Entry x:Name="upperMassEntry"
-                        Placeholder="Enter value"
-                        TextChanged="upperMassEntry_TextChanged"
-                        Margin="10, 5, 10, 0"
-                        WidthRequest="150"/>
-
-                <Picker 
-                        x:Name="upperMassPicker" 
-                        SelectedIndexChanged="upperMassPicker_SelectedIndexChanged"
-                        Margin="10, 5, 10, 0"
-                        WidthRequest="180"/>
-            </HorizontalStackLayout>
-
-            <HorizontalStackLayout
-                    HorizontalOptions="Center">
-
-                <Label
-                        x:Name="lowerMassLabel"
-                        Margin="10, 5, 10, 0"
-                        IsVisible="True"
-                        WidthRequest="150"/>
-
-                <Picker 
-                        x:Name="lowerMassPicker"
-                        SelectedIndexChanged="upperMassPicker_SelectedIndexChanged"
-                        Margin="10, 5, 10, 0"
-                        WidthRequest="180"/>
-            </HorizontalStackLayout>
-            
         </VerticalStackLayout>
        
     </ScrollView>
