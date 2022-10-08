@@ -21,7 +21,7 @@ public partial class MainPage : ContentPage
         InitializePickers(upperAreaPicker, lowerAreaPicker, units.Where(x => x.Type == UnitType.Area).ToList(), "square meter", "acre");
     }
 
-    public void InitializePickers(Picker upperPicker, Picker lowerPicker, List<PhysicalUnit> units, string upperSelected, string lowerSelected)
+    public static void InitializePickers(Picker upperPicker, Picker lowerPicker, List<PhysicalUnit> units, string upperSelected, string lowerSelected)
     {
         upperPicker.ItemsSource = units;
         upperPicker.ItemDisplayBinding = new Binding("Name");
@@ -31,7 +31,7 @@ public partial class MainPage : ContentPage
         lowerPicker.SelectedItem = (PhysicalUnit)units.Where(x => x.Name == lowerSelected).First();
     }
 
-    public void ConvertUnits(object entry, object upperItemPicker, object lowerItemPicker, object label)
+    public static void ConvertUnits(object entry, object upperItemPicker, object lowerItemPicker, object label)
     {
         Entry upperEntry = (Entry)entry;
         Picker upperPicker = (Picker)upperItemPicker;
@@ -56,14 +56,7 @@ public partial class MainPage : ContentPage
             lowerLabel.Text = "Incorrect unit selected";
             return;
         }
-        if (lowerUnit.RelationToBaseWithConstant != null || lowerUnit.RelationToBaseWithConstant != null)
-        {
-            lowerLabel.Text = Math.Round(
-                (enteredValue * upperUnit.RelationToBaseWithConstant[0] + upperUnit.RelationToBaseWithConstant[1]) / lowerUnit.RelationToBaseWithConstant[0] -
-                lowerUnit.RelationToBaseWithConstant[1] / lowerUnit.RelationToBaseWithConstant[0], 12).ToString();
-            return;
-        }
-        lowerLabel.Text = Math.Round(enteredValue * upperUnit.RelationToBase / lowerUnit.RelationToBase, 12).ToString();
+        lowerLabel.Text = PhysicalUnit.Convert(enteredValue, upperUnit, lowerUnit).ToString();
     }
 
     private void upperAreaEntry_TextChanged(object sender, TextChangedEventArgs e)
