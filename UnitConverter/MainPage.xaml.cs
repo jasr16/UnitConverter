@@ -4,19 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using UnitConverter.Model;
+using static UnitConverter.Model.PhysicalUnit;
 
 namespace UnitConverter;
 
 public partial class MainPage : ContentPage
 {
+    public List<PhysicalUnit> units = PhysicalUnit.GetUnits();
     public MainPage()
 	{
         InitializeComponent();
-        InitializeLengthElements();
-        InitializeAreaElements();
-        InitializeVolumeElements();
-        InitializeMassElements();
-        InitializeTemperatureElements();
+        InitializePickers(upperLengthPicker, lowerLengthPicker, units.Where(x => x.Type == UnitType.Length).ToList(), "meter", "inch");
+        InitializePickers(upperTemperaturePicker, lowerTemperaturePicker, units.Where(x => x.Type == UnitType.Temperature).ToList(), "degree Celsius", "degree Fahrenheit");
+        InitializePickers(upperVolumePicker, lowerVolumePicker, units.Where(x => x.Type == UnitType.Volume).ToList(), "liter", "pint");
+        InitializePickers(upperMassPicker, lowerMassPicker, units.Where(x => x.Type == UnitType.Mass).ToList(), "kilogram", "pound");
+        InitializePickers(upperAreaPicker, lowerAreaPicker, units.Where(x => x.Type == UnitType.Area).ToList(), "square meter", "acre");
     }
 
     public void InitializePickers(Picker upperPicker, Picker lowerPicker, List<PhysicalUnit> units, string upperSelected, string lowerSelected)
@@ -28,63 +30,6 @@ public partial class MainPage : ContentPage
         lowerPicker.ItemDisplayBinding = new Binding("Name");
         lowerPicker.SelectedItem = (PhysicalUnit)units.Where(x => x.Name == lowerSelected).First();
     }
-
-    public void InitializeLengthElements()
-    {
-        List<PhysicalUnit> lengthUnits = PhysicalUnit.GetLengthUnits();
-        upperLengthPicker.ItemsSource = lengthUnits;
-        upperLengthPicker.ItemDisplayBinding = new Binding("Name");
-        upperLengthPicker.SelectedItem = (PhysicalUnit)lengthUnits.Where(x => x.Name == "meter").First();
-        lowerLengthPicker.ItemsSource = lengthUnits;
-        lowerLengthPicker.ItemDisplayBinding = new Binding("Name");
-        lowerLengthPicker.SelectedItem = (PhysicalUnit)lengthUnits.Where(x => x.Name == "inch").First();
-    }
-
-    public void InitializeTemperatureElements()
-    {
-        List<PhysicalUnit> temperatureUnits = PhysicalUnit.GetTemperatureUnits();
-        upperTemperaturePicker.ItemsSource = temperatureUnits;
-        upperTemperaturePicker.ItemDisplayBinding = new Binding("Name");
-        upperTemperaturePicker.SelectedItem = (PhysicalUnit)temperatureUnits.Where(x => x.Name == "degree Celsius").First();
-        lowerTemperaturePicker.ItemsSource = temperatureUnits;
-        lowerTemperaturePicker.ItemDisplayBinding = new Binding("Name");
-        lowerTemperaturePicker.SelectedItem = (PhysicalUnit)temperatureUnits.Where(x => x.Name == "degree Fahrenheit").First();
-    }
-
-
-    public void InitializeVolumeElements()
-    {
-        List<PhysicalUnit> volumeUnits = PhysicalUnit.GetVolumeUnits();
-        upperVolumePicker.ItemsSource = volumeUnits;
-        upperVolumePicker.ItemDisplayBinding = new Binding("Name");
-        upperVolumePicker.SelectedItem = (PhysicalUnit)volumeUnits.Where(x => x.Name == "liter").First();
-        lowerVolumePicker.ItemsSource = volumeUnits;
-        lowerVolumePicker.ItemDisplayBinding = new Binding("Name");
-        lowerVolumePicker.SelectedItem = (PhysicalUnit)volumeUnits.Where(x => x.Name == "pint").First();
-    }
-
-    public void InitializeMassElements()
-    {
-        List<PhysicalUnit> massUnits = PhysicalUnit.GetMassUnits();
-        upperMassPicker.ItemsSource = massUnits;
-        upperMassPicker.ItemDisplayBinding = new Binding("Name");
-        upperMassPicker.SelectedItem = (PhysicalUnit)massUnits.Where(x => x.Name == "kilogram").First();
-        lowerMassPicker.ItemsSource = massUnits;
-        lowerMassPicker.ItemDisplayBinding = new Binding("Name");
-        lowerMassPicker.SelectedItem = (PhysicalUnit)massUnits.Where(x => x.Name == "pound").First();
-    }
-
-    public void InitializeAreaElements()
-    {
-        List<PhysicalUnit> areaUnits = PhysicalUnit.GetAreaUnits();
-        upperAreaPicker.ItemsSource = areaUnits;
-        upperAreaPicker.ItemDisplayBinding = new Binding("Name");
-        upperAreaPicker.SelectedItem = (PhysicalUnit)areaUnits.Where(x => x.Name == "square meter").First();
-        lowerAreaPicker.ItemsSource = areaUnits;
-        lowerAreaPicker.ItemDisplayBinding = new Binding("Name");
-        lowerAreaPicker.SelectedItem = (PhysicalUnit)areaUnits.Where(x => x.Name == "acre").First();
-    }
-
 
     public void ConvertUnits(object entry, object upperItemPicker, object lowerItemPicker, object label)
     {
