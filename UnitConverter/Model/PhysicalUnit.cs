@@ -39,7 +39,6 @@ namespace UnitConverter.Model
             RelationToBaseWithConstant = relationToBaseWithConstant;
         }
 
-
         public static List<PhysicalUnit> GetUnits()
         {
             // Length
